@@ -1,4 +1,5 @@
 #In LeopoldoCatania/GAS: Generalized Autoregressive Score Models
+# https://rdrr.io/github/LeopoldoCatania/GAS/src/R/Testing.R
 
 ################################ DENSITY #
 
