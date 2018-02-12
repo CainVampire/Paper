@@ -27,3 +27,8 @@ for (i in 1:length(spars)){
 plot(spars, ss, 'l', xlab = 'spar', ylab = 'Cross Validation Residual Sum of Squares' , main = 'CV RSS vs Spar')
 spars[which.min(ss)]
 
+
+# Code is not neatest, but easy for you to understand. Also, if you specify cv=T in smooth.spline:
+xyspline <- smooth.spline(x, y, cv=T)
+xyspline$spar
+
