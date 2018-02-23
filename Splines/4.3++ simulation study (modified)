@@ -1,0 +1,38 @@
+rm(list=ls()) #clear the existing environment varable.
+
+require(fGarch)
+
+tau <- 0.05
+
+q1 <- qsstd(tau, mean = 0, sd = 2, nu = 6.35, xi = 0.92)
+
+lx <- function(x){
+  (0.09-0.02*x*(x<0)+ 0.01*x*(x>=0))*q1
+}
+
+simula=function(n) {
+  xsamp1=matrix(0,n,300)
+  xsamp2=matrix(0,n,300)
+  for (j in 1:300) {
+    set.seed(j)
+    eps <- rsstd(n, mean = 0, sd = 2, nu = 6.35, xi = 0.92)
+    r=numeric(n)
+    r[1] = eps[1]
+    q <- numeric(n)
+    q[1] <- q1
+    for(t in 2:n){
+      r[t] <- ((0.9*q[t-1] + lx(r[t-1]))/ q1) * eps[t]
+      q[t] <- 0.9 * q[t-1] + lx(r[t-1])
+    }
+    xsamp1[,j]=r
+    xsamp2[,j]=q
+  }
+  return(list(qdat=xsamp2,rdat=xsamp1))
+}
+
+#test
+
+data1 <- simula(250)
+q_ex <- data1$qdat[,1]
+r_ex <- data1$rdat[,1]
+summary(data1$rdat)
