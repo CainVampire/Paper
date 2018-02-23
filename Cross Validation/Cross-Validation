@@ -35,7 +35,11 @@ for (i in 1:n_rep) {
   res[[i]] <- apply(t(df), 2, function(degf) lm(y ~ ns(x, df = degf)))
 }
 
-
+## apply(X, MARGIN, FUN, ...):
+# X is an array or a matrix if the dimension of the array is 2;
+# MARGIN is a variable defining how the function is applied: when MARGIN=1, it applies over rows, whereas with MARGIN=2, it works 
+# over columns. Note that when you use the construct MARGIN=c(1,2), it applies to both rows and columns; and
+# FUN, which is the function that you want to apply to the data. It can be any R function, including a User Defined Function (UDF).
 
 
 # Plot the data
