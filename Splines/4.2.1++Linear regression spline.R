@@ -35,6 +35,6 @@ summary(rq2)
 
 #
 Rmat <- bs(r_ex, degree = 1, knots = 0, intercept = T)
-Rmat <- cbind(1, Rmat[,c(1,3)])
+Rmat <- cbind(1, Rmat[,c(1,3)]) #此处为何意？why?-20180223
 head(Rmat)
 summary(Rmat)
