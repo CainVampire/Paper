@@ -4,16 +4,17 @@ Rmat2 <- cbind(1, pmax(0, r_ex), pmax(0,-r_ex))
 head(Rmat2)
 theta <- 0.9
 n <- 250
+# 此处是把式(4.1)中的那一大坨作为X，其余部分作为y
 Xfun <- function(j=1){
   Xj <- numeric(n)
   for(t in 2:n){
     for(i in 1:(t-1)){
-      Xj[t] <- Xj[t]+theta^(i-1)*Rmat[t-i, j]
+      Xj[t] <- Xj[t]+theta^(i-1)*Rmat[t-i,j]
     }
   }
   return(Xj)
 }
-X <- sapply(1:3, Xfun)
+X <- sapply(1:3, Xfun) #此处是把1，2，3分别代入到了xfun函数中。此处为3的原因是单（内部）节点+2个外部结点=3个结点。
 summary(X)
 y <- numeric(n)
 for(t in 2:n)
