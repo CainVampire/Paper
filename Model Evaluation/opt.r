@@ -60,6 +60,5 @@ CAViaR_optim <- function(y, Model=1, prob=0.05){
   
     bestPar <- RQoptim[order(RQoptim[,1]), ][1, 2:(ncol(tryVals)+1)]
 	cavObj$runModel(bestPar, Model) #Object needs to be updated with the "best" parameters
-  
-	lOut <- list(	bestVals = RQoptim, bestPar = bestPar, VAR = cavObj$VAR, bestRQ = cavObj$RQ)		
+  	lOut <- list(	bestVals = RQoptim, bestPar = bestPar, VAR = cavObj$VAR, bestRQ = cavObj$RQ)		
 }
