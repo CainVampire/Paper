@@ -1,0 +1,25 @@
+install.packages("rugarch")
+require(rugarch)
+
+data <- rnorm(1000)
+
+spec <- ugarchspec(variance.model = list(model = "sGARCH", 
+                                         garchOrder = c(1, 1), 
+                                         submodel = NULL, 
+                                         external.regressors = NULL, 
+                                         variance.targeting = FALSE), 
+
+                   mean.model     = list(armaOrder = c(1, 1), 
+                                         external.regressors = NULL, 
+                                         distribution.model = "norm", 
+                                         start.pars = list(), 
+                                         fixed.pars = list()))
+
+garch <- ugarchfit(spec = spec, data = data, solver.control = list(trace=0))
+
+#Retrieve ARMA(1,1) and GARCH(1,1) coefficients:
+garch@fit$coef
+
+#Retrieve time-varying standard deviation:
+garch@fit$sigma
+
