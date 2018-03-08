@@ -1,3 +1,5 @@
+# https://quant.stackexchange.com/questions/4948/how-to-fit-armagarch-model-in-r
+
 install.packages("rugarch")
 require(rugarch)
 
