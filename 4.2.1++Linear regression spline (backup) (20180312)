@@ -107,7 +107,7 @@ apply(res2, 1, sd)
 # selection # of knots ------------------------------------------------------------
 library(splines)
 n <- 1500
-data2 <- simula(n) ##[to do] µÚ2ÖÖÁ¬½Óº¯Êýl(x)
+data2 <- simula(n) ##[to do] ç¬¬2ç§è¿žæŽ¥å‡½æ•°l(x)
 
 #check function
 rhoFun <- function(u, tau){
@@ -195,7 +195,7 @@ AN <- matrix(nrow=N, ncol=2)
 for(group in 1:N){
   q_ex <- data2$qdat[,group]
   r_ex <- data2$rdat[,group]
-  AN[group,] <- knots_eval() #[to do]methodÐèÒªÔÚknots_evalÖÐ¸Ä±äÄ¬ÈÏÖµ
+  AN[group,] <- knots_eval() #[to do]methodéœ€è¦åœ¨knots_evalä¸­æ”¹å˜é»˜è®¤å€¼
 }
 colnames(AN) <- c('AAD', 'Nknots')
 apply(AN, 2, mean)
@@ -275,11 +275,11 @@ mean(AAD_lambda_mat[,4])#mean(p_lambda)
 
 
 # real data analysis ------------------------------------------------------
-da <- read.table("F:\\×î½ü\\±ÏÒµÂÛÎÄ\\ÎÒµÄÂÛÎÄ\\Code\\CNY_EUR.txt",header = T)
+da <- read.table("F:\\æœ€è¿‘\\æ¯•ä¸šè®ºæ–‡\\æˆ‘çš„è®ºæ–‡\\Code\\CNY_EUR.txt",header = T)
 dim(da) #1942
 ced <- da[,3]
 
-##¶ÔÊÕÅÌ¼Û¼ÆËã¶ÔÊýÊÕÒæÂÊ
+##å¯¹æ”¶ç›˜ä»·è®¡ç®—å¯¹æ•°æ”¶ç›ŠçŽ‡
 r1<- numeric(length(ced)-1) #1941
 for(i in 2:length(ced)){
   r1[i-1] <- (log(ced[i])-log(ced[i-1]))
@@ -292,7 +292,7 @@ n <- length(q)
 r <- numeric(length(q))
 for(j in 1:length(q)){
   cat('j = ', j, '\n')
-  q[j] <- quantile(r1[(j):(npre+j)], 1-tau) #ÓÃÀ´²úÉúºÍqhat±È½ÏµÄq
+  q[j] <- quantile(r1[(j):(npre+j)], 1-tau) #ç”¨æ¥äº§ç”Ÿå’Œqhatæ¯”è¾ƒçš„q
   r[j] <- r1[npre+j]
 }
 c(length(r), length(q))
